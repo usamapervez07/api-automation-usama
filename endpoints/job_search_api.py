@@ -1,4 +1,8 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def job_search(job_title, location, job_id_list):
     url = "https://job-search-api.efinancialcareers.com/v1/efc/jobs/search"
@@ -19,7 +23,7 @@ def job_search(job_title, location, job_id_list):
 
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ZWZjOmVmY3NlY3JldA=='
+        'Authorization': os.getenv('job_search_token')
     }
 
     response = requests.get(url, params, headers=headers)

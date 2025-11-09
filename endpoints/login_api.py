@@ -1,4 +1,8 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def login_user(username, password):
     url = "https://auth.efinancialcareers.com/v1/token"
@@ -12,7 +16,7 @@ def login_user(username, password):
                 }
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ZWZjOmVmY3NlY3JldA=='
+        'Authorization': os.getenv('login_token')
     }
 
     response = requests.post(url, json=payload, headers=headers)
